@@ -112,16 +112,16 @@ export class UCPropertySymbol extends UCFieldSymbol {
 		return symbol;
 	}
 
-	getCompletionSymbols(document: UCDocument, context: string): ISymbol[] {
+	getCompletionSymbols<C extends ISymbol>(document: UCDocument, context: string, kind?: UCTypeFlags): C[] {
 		if (context === '.') {
 			const resolvedType = this.type?.getRef();
 			if (resolvedType instanceof UCSymbol) {
-				return resolvedType.getCompletionSymbols(document, context);
+				return resolvedType.getCompletionSymbols<C>(document, context, kind);
 			}
 		}
 		// TODO: Filter by type only.
 		else if (document.class) {
-			return document.class.getCompletionSymbols(document, context);
+			return document.class.getCompletionSymbols<C>(document, context, kind);
 		}
 		return [];
 	}

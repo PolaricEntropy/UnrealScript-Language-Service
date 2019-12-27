@@ -578,7 +578,7 @@ replicationStatement
 functionDecl
 	: functionSpecifier+ returnParam=functionReturnParam?
 	  functionName (OPEN_PARENS params=parameters? CLOSE_PARENS) 'const'?
-	  functionBody
+	  functionBody?
 	;
 
 functionReturnParam
