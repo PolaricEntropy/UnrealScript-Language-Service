@@ -183,19 +183,19 @@
 		"test": "cd server && npm test"
 	},
 	"devDependencies": {
-		"@types/node": "^13.1.1",
-		"antlr4ts-cli": "^0.5.0-alpha.3",
+		"@types/node": "^13.13.52",
+		"antlr4ts-cli": "^0.5.0-alpha.4",
 		"gulp": "^4.0.2",
-		"js-yaml": "^3.13.1",
+		"js-yaml": "^3.14.1",
 		"merge-options": "^2.0.0",
-		"rimraf": "^3.0.0",
-		"ts-loader": "^6.2.1",
+		"rimraf": "^3.0.2",
+		"ts-loader": "^6.2.2",
 		"tslint": "^5.20.1",
-		"typescript": "^3.7.4",
-		"webpack": "^4.41.4",
-		"webpack-cli": "^3.3.10"
+		"typescript": "^3.9.10",
+		"webpack": "^4.46.0",
+		"webpack-cli": "^3.3.12"
 	},
 	"dependencies": {
-		"antlr4ts": "^0.5.0-alpha.3"
+		"antlr4ts": "^0.5.0-alpha.4"
 	}
 }
