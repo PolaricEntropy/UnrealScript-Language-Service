@@ -4,5 +4,7 @@
 	"antlr4.generation": {
 		"language": "TypeScript",
 		"outputDir": "grammars"
-	}
+	},
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true
 }
