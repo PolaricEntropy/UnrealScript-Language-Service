@@ -65,24 +65,25 @@ connection.onInitialize((params: InitializeParams) => {
 });
 
 connection.onInitialized(async () => {
-	if (hasWorkspaceFolderCapability) {
-		async function buildClassesMapFromFolders(folders: WorkspaceFolder[]) {
-			const pathsMap = new Map<string, string>();
 
-			for (const folder of folders) {
-				const folderPath = URI.parse(folder.uri).fsPath;
-				try {
-					const files = glob.sync(path.join(folderPath, "**/+(*.uc|*.uci)"));
-					for (const file of files) {
-						pathsMap.set(path.basename(file, '.uc').toLowerCase(), file);
-					}
-				} catch (exc) {
-					connection.console.error(exc.toString());
+	async function buildClassesMapFromFolders(folders: WorkspaceFolder[]) {
+		const pathsMap = new Map<string, string>();
+
+		for (const folder of folders) {
+			const folderPath = URI.parse(folder.uri).fsPath;
+			try {
+				const files = glob.sync(path.join(folderPath, "**/+(*.uc|*.uci)"));
+				for (const file of files) {
+					pathsMap.set(path.basename(file, '.uc').toLowerCase(), file);
 				}
+			} catch (exc) {
+				connection.console.error(exc.toString());
 			}
-			return pathsMap;
 		}
+		return pathsMap;
+	}
 
+	if (hasWorkspaceFolderCapability) {
 		const folders = await connection.workspace.getWorkspaceFolders();
 		if (folders) {
 			const map = await buildClassesMapFromFolders(folders);

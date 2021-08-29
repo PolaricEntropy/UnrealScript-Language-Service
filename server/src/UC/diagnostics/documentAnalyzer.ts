@@ -190,7 +190,9 @@ export class DocumentAnalyzer extends DefaultSymbolWalker {
 		super.visitMethod(symbol);
 
 		if (symbol.params) {
-			for (var requiredParamsCount = 0; requiredParamsCount < symbol.params.length; ++ requiredParamsCount) {
+			let requiredParamsCount = 0;
+
+			for (requiredParamsCount = 0; requiredParamsCount < symbol.params.length; ++ requiredParamsCount) {
 				if (symbol.params[requiredParamsCount].isOptional()) {
 					// All trailing params after the first optional param, are required to be declared as 'optional' too.
 					for (let i = requiredParamsCount + 1; i < symbol.params.length; ++ i) {

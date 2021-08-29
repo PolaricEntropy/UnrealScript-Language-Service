@@ -896,8 +896,8 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 			}
 		} finally {
 			this.pop();
-			return symbol;
 		}
+		return symbol;
 	}
 
 	visitObjectDecl(ctx: UCGrammar.ObjectDeclContext) {
