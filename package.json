@@ -186,21 +186,21 @@
 		"test": "cd server && npm test"
 	},
 	"devDependencies": {
-		"@types/node": "^13.1.1",
-		"@typescript-eslint/eslint-plugin": "^4.23.0",
-		"@typescript-eslint/parser": "^4.23.0",
-		"antlr4ts-cli": "^0.5.0-alpha.3",
-		"eslint": "^7.26.0",
+		"@types/node": "^13.13.52",
+		"@typescript-eslint/eslint-plugin": "^4.29.3",
+		"@typescript-eslint/parser": "^4.29.3",
+		"antlr4ts-cli": "^0.5.0-alpha.4",
+		"eslint": "^7.32.0",
 		"gulp": "^4.0.2",
-		"js-yaml": "^3.13.1",
+		"js-yaml": "^3.14.1",
 		"merge-options": "^2.0.0",
-		"rimraf": "^3.0.0",
-		"ts-loader": "^6.2.1",
-		"typescript": "^3.7.4",
-		"webpack": "^4.41.4",
-		"webpack-cli": "^3.3.10"
+		"rimraf": "^3.0.2",
+		"ts-loader": "^6.2.2",
+		"typescript": "^3.9.10",
+		"webpack": "^4.46.0",
+		"webpack-cli": "^3.3.12"
 	},
 	"dependencies": {
-		"antlr4ts": "^0.5.0-alpha.3"
+		"antlr4ts": "^0.5.0-alpha.4"
 	}
 }
