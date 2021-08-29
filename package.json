@@ -1,19 +1,17 @@
 {
 	"name": "uc",
-	"displayName": "UnrealScript",
-	"icon": "Icon.png",
 	"description": "UnrealScript Language support",
 	"author": "Eliot van Uytfanghe",
-	"publisher": "EliotVU",
+	"displayName": "UnrealScript",
+	"icon": "Icon.png",
 	"license": "MIT",
+	"version": "0.4.4",
 	"homepage": "http://EliotVU.com",
 	"repository": {
+		"type": "git",
 		"url": "https://github.com/EliotVU/UnrealScript-Language-Service"
 	},
-	"version": "0.4.4",
-	"engines": {
-		"vscode": "^1.34.0"
-	},
+	"publisher": "EliotVU",
 	"categories": [
 		"Programming Languages",
 		"Linters"
@@ -23,6 +21,9 @@
 		"UnrealScript",
 		"IntelliSense"
 	],
+	"engines": {
+		"vscode": "^1.34.0"
+	},
 	"activationEvents": [
 		"onLanguage:unrealscript"
 	],
