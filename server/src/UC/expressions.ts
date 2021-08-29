@@ -121,7 +121,7 @@ export class UCCallExpression extends UCExpression {
 			}
 		}
 
-		if (this.arguments) for (let arg of this.arguments) {
+		if (this.arguments) for (const arg of this.arguments) {
 			const symbol = arg && arg.getSymbolAtPos(position);
 			if (symbol) {
 				return symbol;
@@ -131,14 +131,14 @@ export class UCCallExpression extends UCExpression {
 
 	index(document: UCDocument, context?: UCStructSymbol) {
 		if (this.expression) this.expression.index(document, context);
-		if (this.arguments) for (let arg of this.arguments) {
+		if (this.arguments) for (const arg of this.arguments) {
 			arg && arg.index(document, context);
 		}
 	}
 
 	analyze(document: UCDocument, context?: UCStructSymbol) {
 		if (this.expression) this.expression.analyze(document, context);
-		if (this.arguments) for (let arg of this.arguments) {
+		if (this.arguments) for (const arg of this.arguments) {
 			arg && arg.analyze(document, context);
 		}
 	}
@@ -334,7 +334,7 @@ function findOperatorSymbol(id: Name, context: UCStructSymbol): UCSymbol | undef
 		scope = scope.outer;
 	}
 	for (; scope instanceof UCStructSymbol; scope = scope.super) {
-		for (var child = scope.children; child; child = child.next) {
+		for (let child = scope.children; child; child = child.next) {
 			if (child.getId() === id) {
 				if (child instanceof UCMethodSymbol && child.isOperator()) {
 					return child;
@@ -350,7 +350,7 @@ function findPreOperatorSymbol(id: Name, context: UCStructSymbol): UCSymbol | un
 		scope = scope.outer;
 	}
 	for (; scope instanceof UCStructSymbol; scope = scope.super) {
-		for (var child = scope.children; child; child = child.next) {
+		for (let child = scope.children; child; child = child.next) {
 			if (child.getId() === id) {
 				if (child instanceof UCMethodSymbol && child.isPreOperator()) {
 					return child;
@@ -366,7 +366,7 @@ function findPostOperatorSymbol(id: Name, context: UCStructSymbol): UCSymbol | u
 		scope = scope.outer;
 	}
 	for (; scope instanceof UCStructSymbol; scope = scope.super) {
-		for (var child = scope.children; child; child = child.next) {
+		for (let child = scope.children; child; child = child.next) {
 			if (child.getId() === id) {
 				if (child instanceof UCMethodSymbol && child.isPostOperator()) {
 					return child;
@@ -900,7 +900,7 @@ export class UCDefaultStructLiteral extends UCExpression {
 	}
 
 	getContainedSymbolAtPos(position: Position) {
-		if (this.arguments) for (let arg of this.arguments) {
+		if (this.arguments) for (const arg of this.arguments) {
 			const symbol = arg && arg.getSymbolAtPos(position);
 			if (symbol) {
 				return symbol;
@@ -909,13 +909,13 @@ export class UCDefaultStructLiteral extends UCExpression {
 	}
 
 	index(document: UCDocument, context?: UCStructSymbol) {
-		if (this.arguments) for (let arg of this.arguments) {
+		if (this.arguments) for (const arg of this.arguments) {
 			arg && arg.index(document, context);
 		}
 	}
 
 	analyze(document: UCDocument, context?: UCStructSymbol) {
-		if (this.arguments) for (let arg of this.arguments) {
+		if (this.arguments) for (const arg of this.arguments) {
 			arg && arg.analyze(document, context);
 		}
 	}

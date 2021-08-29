@@ -386,7 +386,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 		}
 
 		const modifierNodes = ctx.classModifier();
-		for (let modifierNode of modifierNodes) {
+		for (const modifierNode of modifierNodes) {
 			const idNode = modifierNode.identifier();
 			const modifierArgumentNodes = modifierNode.modifierArguments();
 			switch (idNode.text.toLowerCase()) {
@@ -395,7 +395,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 						if (!symbol.dependsOnTypes) {
 							symbol.dependsOnTypes = [];
 						}
-						for (let valueNode of modifierArgumentNodes.modifierValue()) {
+						for (const valueNode of modifierArgumentNodes.modifierValue()) {
 							const identifier: Identifier = {
 								name: toName(valueNode.text),
 								range: rangeFromBounds(valueNode.start, valueNode.stop)
@@ -411,7 +411,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 						if (!symbol.implementsTypes) {
 							symbol.implementsTypes = [];
 						}
-						for (let valueNode of modifierArgumentNodes.modifierValue()) {
+						for (const valueNode of modifierArgumentNodes.modifierValue()) {
 							const identifier: Identifier = {
 								name: toName(valueNode.text),
 								range: rangeFromBounds(valueNode.start, valueNode.stop)
@@ -454,7 +454,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 
 		this.push(symbol);
 		try {
-			let count: number = 0;
+			let count = 0;
 			const memberNodes = ctx.enumMember();
 			for (const memberNode of memberNodes) {
 				const memberSymbol = memberNode.accept(this);
@@ -523,7 +523,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 
 		const block = new UCBlock(rangeFromBounds(ctx.start, ctx.stop));
 		block.statements = Array(statementNodes.length);
-		for (var i = 0; i < statementNodes.length; ++i) {
+		for (let i = 0; i < statementNodes.length; ++i) {
 			const statement = statementNodes[i].accept(this);
 			block.statements[i] = statement;
 
@@ -1165,7 +1165,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 
 		const block = new UCBlock(rangeFromBounds(ctx.start, ctx.stop));
 		block.statements = Array(clauseNodes.length);
-		for (var i = 0; i < clauseNodes.length; ++i) {
+		for (let i = 0; i < clauseNodes.length; ++i) {
 			const caseStatement: IStatement = clauseNodes[i].accept<any>(this);
 			block.statements[i] = caseStatement;
 		}
@@ -1625,7 +1625,7 @@ export class DocumentASTWalker extends AbstractParseTreeVisitor<ISymbol | IExpre
 		let startChar = objectIdNode.symbol.charPositionInLine + 1;
 
 		const identifiers: Identifier[] = [];
-		for (let id of ids) {
+		for (const id of ids) {
 			const identifier: Identifier = {
 				name: toName(id),
 				range: {

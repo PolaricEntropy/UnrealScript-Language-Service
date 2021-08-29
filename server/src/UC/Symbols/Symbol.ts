@@ -38,7 +38,7 @@ export abstract class UCSymbol implements ISymbol {
 
 	getHash(): number {
 		let hash: number = this.id.name.hash;
-		for (var outer = this.outer; outer; outer = outer.outer) {
+		for (let outer = this.outer; outer; outer = outer.outer) {
 			hash = hash ^ (outer.getId().hash >> 4);
 		}
 		return hash;
@@ -46,7 +46,7 @@ export abstract class UCSymbol implements ISymbol {
 
 	getQualifiedName(): string {
 		let text = this.getId().toString();
-		for (var outer = this.outer; outer; outer = outer.outer) {
+		for (let outer = this.outer; outer; outer = outer.outer) {
 			text = outer.getId() + '.' + text;
 		}
 		return text;

@@ -35,13 +35,13 @@ const pendingTextDocuments$ = new Subject<{ textDocument: TextDocument, isDirty:
 
 const textDocuments: TextDocuments = new TextDocuments();
 
-let hasWorkspaceFolderCapability: boolean = false;
+let hasWorkspaceFolderCapability = false;
 let currentSettings: ServerSettings = defaultSettings;
 
-export let connection = createConnection(ProposedFeatures.all);
+export const connection = createConnection(ProposedFeatures.all);
 
 connection.onInitialize((params: InitializeParams) => {
-	let capabilities = params.capabilities;
+	const capabilities = params.capabilities;
 
 	hasWorkspaceFolderCapability = !!(capabilities.workspace && !!capabilities.workspace.workspaceFolders);
 
@@ -69,11 +69,11 @@ connection.onInitialized(async () => {
 		async function buildClassesMapFromFolders(folders: WorkspaceFolder[]) {
 			const pathsMap = new Map<string, string>();
 
-			for (let folder of folders) {
+			for (const folder of folders) {
 				const folderPath = URI.parse(folder.uri).fsPath;
 				try {
 					const files = glob.sync(path.join(folderPath, "**/+(*.uc|*.uci)"));
-					for (let file of files) {
+					for (const file of files) {
 						pathsMap.set(path.basename(file, '.uc').toLowerCase(), file);
 					}
 				} catch (exc) {
@@ -196,8 +196,8 @@ connection.onDidChangeConfiguration((change) => {
 	applyMacroSymbols(config.macroSymbols);
 
 	const intSymbols = Object.entries(config.intrinsicSymbols);
-	for (let [key, value] of intSymbols) {
-		let [packageName, symbolName] = key.split('.');
+	for (const [key, value] of intSymbols) {
+		const [packageName, symbolName] = key.split('.');
 		let pkg = PackagesTable.getSymbol(toName(packageName));
 		if (!pkg) {
 			pkg = new UCPackage(toName(packageName));

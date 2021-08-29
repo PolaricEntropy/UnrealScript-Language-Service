@@ -11,12 +11,12 @@ import {
 let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
-	let serverModule = context.asAbsolutePath(
+	const serverModule = context.asAbsolutePath(
 		path.join('server', 'out', 'server.js')
 	);
 
 	const memoryOption = '--max-old-space-size=8192';
-	let serverOptions: ServerOptions = {
+	const serverOptions: ServerOptions = {
 		run: {
 			module: serverModule,
 			transport: TransportKind.ipc ,
@@ -33,7 +33,7 @@ export function activate(context: ExtensionContext) {
 		}
 	};
 
-	let clientOptions: LanguageClientOptions = {
+	const clientOptions: LanguageClientOptions = {
 		documentSelector: [{ scheme: 'file', language: 'unrealscript' }],
 		synchronize: {
 			configurationSection: 'unrealscript',

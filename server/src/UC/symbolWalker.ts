@@ -88,7 +88,7 @@ export class DefaultSymbolWalker implements SymbolWalker<ISymbol | IExpression |
 			symbol.extendsType.accept<any>(this);
 		}
 
-		for (var child = symbol.children; child; child = child.next) {
+		for (let child = symbol.children; child; child = child.next) {
 			child.accept<any>(this);
 		}
 
@@ -104,13 +104,13 @@ export class DefaultSymbolWalker implements SymbolWalker<ISymbol | IExpression |
 		}
 
 		if (symbol.dependsOnTypes) {
-			for (var classTypeRef of symbol.dependsOnTypes) {
+			for (const classTypeRef of symbol.dependsOnTypes) {
 				classTypeRef.accept<any>(this);
 			}
 		}
 
 		if (symbol.implementsTypes) {
-			for (var interfaceTypeRef of symbol.implementsTypes) {
+			for (const interfaceTypeRef of symbol.implementsTypes) {
 				interfaceTypeRef.accept<any>(this);
 			}
 		}
@@ -171,7 +171,7 @@ export class DefaultSymbolWalker implements SymbolWalker<ISymbol | IExpression |
 
 	visitState(symbol: UCStateSymbol): ISymbol {
 		if (symbol.ignoreRefs) {
-			for (var ref of symbol.ignoreRefs){
+			for (const ref of symbol.ignoreRefs){
 				ref.accept<any>(this);
 			}
 		}

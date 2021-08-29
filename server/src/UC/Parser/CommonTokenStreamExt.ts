@@ -14,7 +14,7 @@ export class CommonTokenStreamExt extends CommonTokenStream {
 
 	initMacroTree(macroTree: MacroProgramContext, errListener: ANTLRErrorListener<number>) {
 		const smNodes = macroTree.macroStatement();
-		for (let smNode of smNodes) {
+		for (const smNode of smNodes) {
 			const macroCtx = smNode.macro();
 			if (macroCtx.isActive && macroCtx instanceof MacroCallContext) {
 				// TODO: Cache the evaluated tokens from within the `define context itself,
@@ -46,7 +46,7 @@ export class CommonTokenStreamExt extends CommonTokenStream {
 			return 0;
 		}
 		for (let i = 0; i < n; i++) {
-			let token = this.tokenSource.nextToken() as TokenExt;
+			const token = this.tokenSource.nextToken() as TokenExt;
 
 			// See if we have any evaluated tokens for this macro call.
 			// if so, insert a token references to the evaluated tokens that are part of a "`define" text block.

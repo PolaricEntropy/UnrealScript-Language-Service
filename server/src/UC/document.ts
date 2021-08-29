@@ -56,7 +56,7 @@ export class UCDocument {
 		const inputStream = new CaseInsensitiveStream(text);
 		const lexer = new UCLexer(inputStream);
 		lexer.removeErrorListeners();
-		lexer.addErrorListener(walker as ANTLRErrorListener<Number>);
+		lexer.addErrorListener(walker as ANTLRErrorListener<number>);
 		const tokens = new CommonTokenStreamExt(lexer);
 
 		const startPreprocressing = performance.now();
@@ -66,7 +66,7 @@ export class UCDocument {
 				const macroTree = preprocessDocument(this, macroParser, walker);
 				if (macroTree) {
 					lexer.reset();
-					tokens.initMacroTree(macroTree, walker as ANTLRErrorListener<Number>);
+					tokens.initMacroTree(macroTree, walker as ANTLRErrorListener<number>);
 				}
 			} catch (err) {
 				console.error(err);
@@ -142,7 +142,7 @@ export class UCDocument {
 			}
 		}
 
-		for (let symbol of this.symbols) {
+		for (const symbol of this.symbols) {
 			if (symbol instanceof UCStructSymbol) {
 				removeObjects(symbol.children);
 				// Not necessary, we don't support included documents yet!, thus no script structs nor enums without a class.
@@ -159,7 +159,7 @@ export class UCDocument {
 		this.hasBeenIndexed = false;
 
 		// Clear all the indexed references that we have made.
-		for (let [key, value] of this.indexReferencesMade) {
+		for (const [key, value] of this.indexReferencesMade) {
 			const refs = IndexedReferencesMap.get(key);
 			if (refs) {
 				value.forEach(ref => refs.delete(ref));

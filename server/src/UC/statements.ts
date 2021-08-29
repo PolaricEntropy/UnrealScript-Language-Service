@@ -82,7 +82,7 @@ export class UCBlock implements IStatement {
 	}
 
 	getContainedSymbolAtPos(position: Position) {
-		for (let statement of this.statements) if (statement) {
+		for (const statement of this.statements) if (statement) {
 			const symbol = statement.getSymbolAtPos(position);
 			if (symbol) {
 				return symbol;
@@ -91,7 +91,7 @@ export class UCBlock implements IStatement {
 	}
 
 	index(document: UCDocument, context: UCStructSymbol) {
-		for (let statement of this.statements) if (statement) {
+		for (const statement of this.statements) if (statement) {
 			statement.index(document, context);
 		}
 	}
