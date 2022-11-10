@@ -20,7 +20,7 @@
 		"@types/glob": "^7.1.4",
 		"@types/mocha": "^5.2.7",
 		"chai": "^4.3.4",
-		"mocha": "^6.2.3",
+		"mocha": "^10.1.0",
 		"ts-node": "^8.10.2",
 		"vscode-uri": "^2.1.2"
 	}
